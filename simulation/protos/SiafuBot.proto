@@ -1,0 +1,418 @@
+#VRML_SIM R2025a utf8
+# SiafuBot - Swarm Agriculture Robot PROTO
+# License: MIT
+
+PROTO SiafuBot [
+  field SFVec3f    translation  0 0 0
+  field SFRotation rotation     0 1 0 0
+  field SFString   name         "siafu_bot"
+  field SFColor    bodyColor    0.2 0.2 0.8
+  field SFFloat    wheelRadius  0.04
+  field SFFloat    wheelWidth   0.02
+]
+{
+  Robot {
+    translation IS translation
+    rotation IS rotation
+    name IS name
+    model "Siafu Agriculture Robot"
+    description "Swarm weed removal robot for smallholder farms"
+    
+    children [
+      # ==========================================
+      # CHASSIS BODY
+      # ==========================================
+      DEF CHASSIS Group {
+        children [
+          # Main body (simplified)
+          DEF Body Shape {
+            appearance PBRAppearance {
+              baseColor IS bodyColor
+              roughness 0.6
+              metalness 0.1
+            }
+            geometry Box {
+              size 0.12 0.04 0.10
+            }
+          }
+          # Top plate (for solar panel)
+          DEF TopPlate Transform {
+            translation 0 0.03 0
+            children [
+              Shape {
+                appearance PBRAppearance {
+                  baseColor 0.15 0.15 0.25
+                  roughness 0.4
+                  metalness 0.3
+                }
+                geometry Box { size 0.08 0.005 0.07 }
+              }
+            ]
+          }
+          # Status LED (shows robot state)
+          DEF StatusLED Transform {
+            translation 0.06 0.025 0
+            children [
+              DEF LED_BULB Shape {
+                appearance PBRAppearance {
+                  baseColor 0 1 0
+                  emissiveColor 0 1 0
+                }
+                geometry Sphere { radius 0.005 }
+              }
+            ]
+          }
+        ]
+      }
+      
+      # ==========================================
+      # LEFT WHEELS (skid-steer pair)
+      # ==========================================
+      DEF LeftWheelGroup Transform {
+        translation 0 0 0.06
+        children [
+          # Front left wheel
+          DEF LeftWheelFront HingeJoint {
+            jointParameters HingeJointParameters {
+              anchor 0.04 0 -0.04
+              axis 0 1 0
+            }
+            device [
+              RotationalMotor {
+                name "left_motor"
+                maxVelocity 4.0
+                maxTorque 0.5
+              }
+              PositionSensor {
+                name "left_motor_sensor"
+              }
+            ]
+            endPoint Solid {
+              name "wheel_left_front"
+              translation 0.04 0 -0.04
+              children [
+                DEF WheelShape Group {
+                  children [
+                    Shape {
+                      appearance PBRAppearance {
+                        baseColor 0.1 0.1 0.1
+                        roughness 0.9
+                      }
+                      geometry Cylinder {
+                        height IS wheelWidth
+                        radius IS wheelRadius
+                        subdivision 16
+                      }
+                    }
+                    # Tread detail
+                    Transform { translation 0 0.005 0 children [ Shape { geometry Cylinder { height 0.003 radius 0.045 subdivision 16 } appearance PBRAppearance { baseColor 0.2 0.2 0.2 roughness 1 } } ] }
+                    Transform { translation 0 -0.005 0 children [ Shape { geometry Cylinder { height 0.003 radius 0.045 subdivision 16 } appearance PBRAppearance { baseColor 0.2 0.2 0.2 roughness 1 } } ] }
+                  ]
+                }
+              ]
+              boundingObject Cylinder {
+                height IS wheelWidth
+                radius IS wheelRadius
+                subdivision 16
+              }
+              physics Physics {
+                density 200
+              }
+            }
+          }
+          
+          # Rear left wheel
+          DEF LeftWheelRear HingeJoint {
+            jointParameters HingeJointParameters {
+              anchor -0.04 0 -0.04
+              axis 0 1 0
+            }
+            device [
+              RotationalMotor {
+                name "left_motor"
+                maxVelocity 4.0
+                maxTorque 0.5
+              }
+            ]
+            endPoint Solid {
+              name "wheel_left_rear"
+              translation -0.04 0 -0.04
+              children [ USE WheelShape ]
+              boundingObject Cylinder {
+                height IS wheelWidth
+                radius IS wheelRadius
+                subdivision 16
+              }
+              physics Physics {
+                density 200
+              }
+            }
+          }
+        ]
+      }
+      
+      # ==========================================
+      # RIGHT WHEELS (skid-steer pair)
+      # ==========================================
+      DEF RightWheelGroup Transform {
+        translation 0 0 -0.06
+        children [
+          # Front right wheel
+          DEF RightWheelFront HingeJoint {
+            jointParameters HingeJointParameters {
+              anchor 0.04 0 0.04
+              axis 0 1 0
+            }
+            device [
+              RotationalMotor {
+                name "right_motor"
+                maxVelocity 4.0
+                maxTorque 0.5
+              }
+              PositionSensor {
+                name "right_motor_sensor"
+              }
+            ]
+            endPoint Solid {
+              name "wheel_right_front"
+              translation 0.04 0 0.04
+              children [ USE WheelShape ]
+              boundingObject Cylinder {
+                height IS wheelWidth
+                radius IS wheelRadius
+                subdivision 16
+              }
+              physics Physics {
+                density 200
+              }
+            }
+          }
+          
+          # Rear right wheel
+          DEF RightWheelRear HingeJoint {
+            jointParameters HingeJointParameters {
+              anchor -0.04 0 0.04
+              axis 0 1 0
+            }
+            device [
+              RotationalMotor {
+                name "right_motor"
+                maxVelocity 4.0
+                maxTorque 0.5
+              }
+            ]
+            endPoint Solid {
+              name "wheel_right_rear"
+              translation -0.04 0 0.04
+              children [ USE WheelShape ]
+              boundingObject Cylinder {
+                height IS wheelWidth
+                radius IS wheelRadius
+                subdivision 16
+              }
+              physics Physics {
+                density 200
+              }
+            }
+          }
+        ]
+      }
+      
+      # ==========================================
+      # CAMERA (front-facing, downward angle)
+      # ==========================================
+      DEF CameraSensor Transform {
+        translation 0.07 0.035 0
+        rotation 0.8 0 -0.3 0.3
+        children [
+          DEF CameraShape Shape {
+            appearance PBRAppearance {
+              baseColor 0.05 0.05 0.05
+              roughness 0.5
+            }
+            geometry Box { size 0.015 0.005 0.008 }
+          }
+          Camera {
+            name "camera"
+            width 160
+            height 120
+            fieldOfView 1.2
+            near 0.01
+            far 2.0
+            antiAliasing TRUE
+          }
+        ]
+      }
+      
+      # ==========================================
+      # GPS
+      # ==========================================
+      DEF GPSSensor Transform {
+        translation 0 0.02 0
+        children [
+          GPS {
+            name "gps"
+            resolution 0.01
+            noiseCorrelation 0.1
+          }
+        ]
+      }
+      
+      # ==========================================
+      # COMPASS / INERTIAL UNIT
+      # ==========================================
+      DEF CompassSensor Transform {
+        translation 0 0.02 0
+        children [
+          Compass {
+            name "compass"
+          }
+          Gyro {
+            name "gyro"
+          }
+        ]
+      }
+      
+      # ==========================================
+      # ULTRASONIC SENSORS (obstacle detection)
+      # ==========================================
+      DEF USFront Transform {
+        translation 0.08 0.01 0
+        children [
+          DEF USSensor Shape {
+            appearance PBRAppearance { baseColor 0.5 0.5 0.5 }
+            geometry Cylinder { height 0.008 radius 0.004 }
+          }
+          DistanceSensor {
+            name "us_front"
+            lookupTable [0 0 0, 0.5 0.5 0, 1.0 1.0 0]
+            type "generic"
+            numberOfRays 3
+            aperture 0.3
+          }
+        ]
+      }
+      DEF USLeft Transform {
+        translation 0 0.01 0.06
+        rotation 0 1 0 1.57
+        children [ USE USSensor
+          DistanceSensor {
+            name "us_left"
+            lookupTable [0 0 0, 0.5 0.5 0, 1.0 1.0 0]
+            type "generic"
+            numberOfRays 3
+            aperture 0.3
+          }
+        ]
+      }
+      DEF USRight Transform {
+        translation 0 0.01 -0.06
+        rotation 0 1 0 -1.57
+        children [ USE USSensor
+          DistanceSensor {
+            name "us_right"
+            lookupTable [0 0 0, 0.5 0.5 0, 1.0 1.0 0]
+            type "generic"
+            numberOfRays 3
+            aperture 0.3
+          }
+        ]
+      }
+      
+      # ==========================================
+      # CUTTER MECHANISM (front)
+      # ==========================================
+      DEF Cutter Transform {
+        translation 0.075 0 -0.01
+        children [
+          DEF CutterArm Shape {
+            appearance PBRAppearance {
+              baseColor 0.3 0.3 0.3
+              metalness 0.5
+              roughness 0.3
+            }
+            geometry Box { size 0.02 0.005 0.01 }
+          }
+          # Cutter blade (visual only - logic in controller)
+          DEF CutterBlade Transform {
+            translation 0.015 0 0
+            children [
+              Shape {
+                appearance PBRAppearance {
+                  baseColor 0.8 0.8 0.8
+                  metalness 0.7
+                  roughness 0.2
+                }
+                geometry Cylinder {
+                  height 0.003
+                  radius 0.015
+                  subdivision 12
+                }
+              }
+            ]
+          }
+          # Cutter motor (linear actuator for height)
+          DEF CutterLinearActuator Transform {
+            translation 0.01 0 0
+            children [
+              Shape {
+                appearance PBRAppearance { baseColor 0.2 0.2 0.2 }
+                geometry Box { size 0.005 0.008 0.005 }
+              }
+            ]
+          }
+        ]
+      }
+      
+      # ==========================================
+      # LORA ANTENNA (visual)
+      # ==========================================
+      DEF LoRaAntenna Transform {
+        translation 0 0.04 0.03
+        children [
+          Shape {
+            appearance PBRAppearance {
+              baseColor 0.05 0.05 0.05
+              roughness 0.8
+            }
+            geometry Cylinder {
+              height 0.02
+              radius 0.001
+            }
+          }
+        ]
+      }
+      
+      # ==========================================
+      # EMITTER / RECEIVER (LoRa mesh comms)
+      # ==========================================
+      Emitter {
+        name "lora_tx"
+        type "serial"
+      }
+      Receiver {
+        name "lora_rx"
+        type "serial"
+      }
+    ]  # end children
+    
+    # ==========================================
+    # PHYSICS
+    # ==========================================
+    boundingObject Group {
+      children [
+        Transform { translation 0 0 0 children [ Box { size 0.10 0.035 0.08 } ] }
+      ]
+    }
+    physics Physics {
+      density 300
+      centerOfMass [0 0 0]
+    }
+    
+    # ==========================================
+    # CONTROLLER
+    # ==========================================
+    controller "siafu_controller"
+    supervisor FALSE
+  }
+}

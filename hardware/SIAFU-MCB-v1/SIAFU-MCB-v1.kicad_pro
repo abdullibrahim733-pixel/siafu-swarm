@@ -1,0 +1,45 @@
+{
+  "meta": {
+    "filename": "SIAFU-MCB-v1.kicad_pro",
+    "version": 2
+  },
+  "project": {
+    "files": [],
+    "name": "SIAFU-MCB-v1"
+  },
+  "sheets": [
+    [
+      "6ac555c9-c0f3-2b1a-bae1-a426afaf082e",
+      "Root"
+    ]
+  ],
+  "board": {
+    "thickness": 1.6,
+    "design_settings": {
+      "rules": {
+        "min_clearance": 0.2,
+        "min_track_width": 0.25,
+        "min_via_diameter": 0.6,
+        "min_via_drill": 0.3,
+        "min_microvia_diameter": 0.3,
+        "min_microvia_drill": 0.1,
+        "min_hole_to_hole": 0.25,
+        "min_silk_to_copper": 0.15,
+        "min_silk_to_silk": 0.15,
+        "min_copper_to_edge": 0.2,
+        "min_hole_size": 0.2,
+        "blind_buried_vias_allowed": false,
+        "microvias_allowed": false
+      }
+    }
+  },
+  "schematic": {
+    "drawing": {
+      "page_layout": {
+        "height": 11.69,
+        "width": 8.27
+      }
+    }
+  },
+  "pcbnew": {}
+}

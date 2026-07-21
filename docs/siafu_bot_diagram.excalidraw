@@ -1,0 +1,242 @@
+{
+  "type": "excalidraw",
+  "version": 2,
+  "source": "hermes-agent",
+  "elements": [
+    {
+      "type": "text",
+      "id": "title",
+      "x": 140,
+      "y": 30,
+      "width": 560,
+      "height": 40,
+      "text": "Siafu — Swarm Agriculture Robot",
+      "fontSize": 36,
+      "fontFamily": 1,
+      "strokeColor": "#1e1e1e",
+      "originalText": "Siafu — Swarm Agriculture Robot",
+      "autoResize": true,
+      "textAlign": "center"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "x": 180,
+      "y": 75,
+      "width": 480,
+      "height": 28,
+      "text": "Top-down schematic view (body: 12cm × 10cm, height: 4cm)",
+      "fontSize": 18,
+      "fontFamily": 1,
+      "strokeColor": "#495057",
+      "originalText": "Top-down schematic view (body: 12cm × 10cm, height: 4cm)",
+      "autoResize": true,
+      "textAlign": "center"
+    },
+    {
+      "type": "rectangle",
+      "id": "bg",
+      "x": 110,
+      "y": 110,
+      "width": 620,
+      "height": 520,
+      "roundness": { "type": 3 },
+      "backgroundColor": "#f8f9fa",
+      "fillStyle": "solid"
+    },
+    {
+      "type": "line",
+      "id": "grid_h1",
+      "x": 110,
+      "y": 210,
+      "width": 620,
+      "height": 0,
+      "points": [[0,0],[620,0]],
+      "strokeStyle": "dashed",
+      "strokeColor": "#dee2e6",
+      "strokeWidth": 1
+    },
+    {
+      "type": "line",
+      "id": "grid_h2",
+      "x": 110,
+      "y": 310,
+      "width": 620,
+      "height": 0,
+      "points": [[0,0],[620,0]],
+      "strokeStyle": "dashed",
+      "strokeColor": "#dee2e6",
+      "strokeWidth": 1
+    },
+    {
+      "type": "line",
+      "id": "grid_h3",
+      "x": 110,
+      "y": 410,
+      "width": 620,
+      "height": 0,
+      "points": [[0,0],[620,0]],
+      "strokeStyle": "dashed",
+      "strokeColor": "#dee2e6",
+      "strokeWidth": 1
+    },
+    {
+      "type": "line",
+      "id": "grid_h4",
+      "x": 110,
+      "y": 510,
+      "width": 620,
+      "height": 0,
+      "points": [[0,0],[620,0]],
+      "strokeStyle": "dashed",
+      "strokeColor": "#dee2e6",
+      "strokeWidth": 1
+    },
+    {
+      "type": "line",
+      "id": "grid_v1",
+      "x": 210,
+      "y": 110,
+      "width": 0,
+      "height": 520,
+      "points": [[0,0],[0,520]],
+      "strokeStyle": "dashed",
+      "strokeColor": "#dee2e6",
+      "strokeWidth": 1
+    },
+    {
+      "type": "line",
+      "id": "grid_v2",
+      "x": 310,
+      "y": 110,
+      "width": 0,
+      "height": 520,
+      "points": [[0,0],[0,520]],
+      "strokeStyle": "dashed",
+      "strokeColor": "#dee2e6",
+      "strokeWidth": 1
+    },
+    {
+      "type": "line",
+      "id": "grid_v3",
+      "x": 510,
+      "y": 110,
+      "width": 0,
+      "height": 520,
+      "points": [[0,0],[0,520]],
+      "strokeStyle": "dashed",
+      "strokeColor": "#dee2e6",
+      "strokeWidth": 1
+    },
+    {
+      "type": "line",
+      "id": "grid_v4",
+      "x": 610,
+      "y": 110,
+      "width": 0,
+      "height": 520,
+      "points": [[0,0],[0,520]],
+      "strokeStyle": "dashed",
+      "strokeColor": "#dee2e6",
+      "strokeWidth": 1
+    },
+
+    { "type": "rectangle", "id": "body", "x": 290, "y": 245, "width": 260, "height": 240, "roundness": { "type": 3 }, "backgroundColor": "#4dabf7", "fillStyle": "solid", "strokeWidth": 2, "boundElements": [{ "id": "t_body", "type": "text" }] },
+    { "type": "text", "id": "t_body", "x": 295, "y": 340, "width": 250, "height": 50, "text": "Main Body\n12cm × 10cm × 4cm", "fontSize": 16, "fontFamily": 1, "strokeColor": "#ffffff", "textAlign": "center", "verticalAlign": "middle", "containerId": "body", "originalText": "Main Body\n12cm × 10cm × 4cm", "autoResize": true },
+
+    { "type": "rectangle", "id": "solar", "x": 310, "y": 265, "width": 180, "height": 50, "roundness": { "type": 3 }, "backgroundColor": "#212529", "fillStyle": "solid", "strokeWidth": 1, "opacity": 80 },
+    { "type": "text", "id": "t_solar", "x": 320, "y": 270, "width": 160, "height": 20, "text": "Solar Panel (top)", "fontSize": 14, "fontFamily": 1, "strokeColor": "#adb5bd", "textAlign": "center", "verticalAlign": "middle", "containerId": "solar", "originalText": "Solar Panel (top)", "autoResize": true },
+
+    { "type": "rectangle", "id": "solar2", "x": 310, "y": 405, "width": 180, "height": 50, "roundness": { "type": 3 }, "backgroundColor": "#212529", "fillStyle": "solid", "strokeWidth": 1, "opacity": 80 },
+    { "type": "text", "id": "t_solar2", "x": 320, "y": 410, "width": 160, "height": 20, "text": "Electronics Bay", "fontSize": 14, "fontFamily": 1, "strokeColor": "#adb5bd", "textAlign": "center", "verticalAlign": "middle", "containerId": "solar2", "originalText": "Electronics Bay", "autoResize": true },
+
+    { "type": "ellipse", "id": "led", "x": 515, "y": 260, "width": 18, "height": 18, "backgroundColor": "#40c057", "fillStyle": "solid", "strokeWidth": 1 },
+    { "type": "text", "id": "t_led", "x": 538, "y": 256, "width": 120, "height": 20, "text": "Status LED", "fontSize": 14, "fontFamily": 1, "strokeColor": "#1e1e1e", "originalText": "Status LED", "autoResize": true },
+
+    { "type": "rectangle", "id": "cam", "x": 540, "y": 360, "width": 40, "height": 30, "roundness": { "type": 3 }, "backgroundColor": "#868e96", "fillStyle": "solid", "strokeWidth": 1 },
+    { "type": "text", "id": "t_cam", "x": 540, "y": 394, "width": 100, "height": 20, "text": "Camera 160×120", "fontSize": 13, "fontFamily": 1, "strokeColor": "#1e1e1e", "originalText": "Camera 160×120", "autoResize": true },
+
+    { "type": "rectangle", "id": "cutter", "x": 540, "y": 310, "width": 25, "height": 60, "roundness": { "type": 3 }, "backgroundColor": "#dee2e6", "fillStyle": "solid", "strokeWidth": 1 },
+    { "type": "text", "id": "t_cutter", "x": 540, "y": 280, "width": 90, "height": 18, "text": "Cutter Blade", "fontSize": 13, "fontFamily": 1, "strokeColor": "#1e1e1e", "originalText": "Cutter Blade", "autoResize": true },
+
+    { "type": "ellipse", "id": "us_f", "x": 530, "y": 448, "width": 14, "height": 14, "backgroundColor": "#ffd43b", "fillStyle": "solid", "strokeWidth": 1 },
+    { "type": "text", "id": "t_us_f", "x": 550, "y": 445, "width": 100, "height": 18, "text": "Ultrasonic ×3", "fontSize": 13, "fontFamily": 1, "strokeColor": "#1e1e1e", "originalText": "Ultrasonic ×3", "autoResize": true },
+
+    { "type": "ellipse", "id": "us_l", "x": 275, "y": 465, "width": 14, "height": 14, "backgroundColor": "#ffd43b", "fillStyle": "solid", "strokeWidth": 1 },
+    { "type": "ellipse", "id": "us_r", "x": 525, "y": 465, "width": 14, "height": 14, "backgroundColor": "#ffd43b", "fillStyle": "solid", "strokeWidth": 1 },
+
+    { "type": "line", "id": "antenna", "x": 340, "y": 245, "width": 6, "height": 40, "points": [[0,0],[3,-40],[6,0]], "strokeWidth": 2, "strokeColor": "#495057" },
+    { "type": "text", "id": "t_ant", "x": 350, "y": 192, "width": 90, "height": 18, "text": "LoRa Antenna", "fontSize": 13, "fontFamily": 1, "strokeColor": "#1e1e1e", "originalText": "LoRa Antenna", "autoResize": true },
+
+    { "type": "rectangle", "id": "wl_f", "x": 255, "y": 235, "width": 50, "height": 30, "roundness": { "type": 3 }, "backgroundColor": "#343a40", "fillStyle": "solid", "strokeWidth": 1 },
+    { "type": "text", "id": "t_wlf", "x": 205, "y": 238, "width": 50, "height": 18, "text": "FL", "fontSize": 14, "fontFamily": 1, "strokeColor": "#868e96", "containerId": "wl_f", "originalText": "FL", "autoResize": true },
+
+    { "type": "rectangle", "id": "wr_f", "x": 535, "y": 235, "width": 50, "height": 30, "roundness": { "type": 3 }, "backgroundColor": "#343a40", "fillStyle": "solid", "strokeWidth": 1 },
+    { "type": "text", "id": "t_wrf", "x": 535, "y": 238, "width": 50, "height": 18, "text": "FR", "fontSize": 14, "fontFamily": 1, "strokeColor": "#868e96", "containerId": "wr_f", "originalText": "FR", "autoResize": true },
+
+    { "type": "rectangle", "id": "wl_r", "x": 255, "y": 460, "width": 50, "height": 30, "roundness": { "type": 3 }, "backgroundColor": "#343a40", "fillStyle": "solid", "strokeWidth": 1 },
+    { "type": "text", "id": "t_wlr", "x": 255, "y": 463, "width": 50, "height": 18, "text": "RL", "fontSize": 14, "fontFamily": 1, "strokeColor": "#868e96", "containerId": "wl_r", "originalText": "RL", "autoResize": true },
+
+    { "type": "rectangle", "id": "wr_r", "x": 535, "y": 460, "width": 50, "height": 30, "roundness": { "type": 3 }, "backgroundColor": "#343a40", "fillStyle": "solid", "strokeWidth": 1 },
+    { "type": "text", "id": "t_wrr", "x": 535, "y": 463, "width": 50, "height": 18, "text": "RR", "fontSize": 14, "fontFamily": 1, "strokeColor": "#868e96", "containerId": "wr_r", "originalText": "RR", "autoResize": true },
+
+    { "type": "text", "id": "wheel_label", "x": 310, "y": 510, "width": 220, "height": 20, "text": "Wheels: Ø4cm, skid-steer differential drive", "fontSize": 14, "fontFamily": 1, "strokeColor": "#495057", "originalText": "Wheels: Ø4cm, skid-steer differential drive", "autoResize": true },
+
+    { "type": "text", "id": "compass_label", "x": 130,
+      "y": 140,
+      "width": 100,
+      "height": 18,
+      "text": "↑ North (+X axis)",
+      "fontSize": 14,
+      "fontFamily": 1,
+      "strokeColor": "#e03131",
+      "originalText": "↑ North (+X axis)",
+      "autoResize": true
+    },
+
+    {
+      "type": "arrow",
+      "id": "arrow_fwd",
+      "x": 420,
+      "y": 130,
+      "width": 0,
+      "height": 50,
+      "points": [[0,0],[0,50]],
+      "endArrowhead": "arrow",
+      "strokeWidth": 2,
+      "strokeColor": "#e03131"
+    },
+    {
+      "type": "text",
+      "id": "fwd_label",
+      "x": 380,
+      "y": 115,
+      "width": 80,
+      "height": 18,
+      "text": "Forward",
+      "fontSize": 13,
+      "fontFamily": 1,
+      "strokeColor": "#e03131",
+      "originalText": "Forward",
+      "autoResize": true
+    },
+
+    {
+      "type": "text",
+      "id": "specs",
+      "x": 160,
+      "y": 555,
+      "width": 520,
+      "height": 60,
+      "text": "Sensors: Camera (160×120) | GPS | Compass | Gyro | 3× Ultrasonic | LoRa Emitter/Receiver\nActuators: 4× DC motors (skid-steer) | Cutter blade | Status LED\nCompute: Webots simulation (target: Raspberry Pi 5 + ESP32)",
+      "fontSize": 14,
+      "fontFamily": 1,
+      "strokeColor": "#495057",
+      "originalText": "Sensors: Camera (160×120) | GPS | Compass | Gyro | 3× Ultrasonic | LoRa Emitter/Receiver\nActuators: 4× DC motors (skid-steer) | Cutter blade | Status LED\nCompute: Webots simulation (target: Raspberry Pi 5 + ESP32)",
+      "autoResize": true
+    }
+  ],
+  "appState": {
+    "viewBackgroundColor": "#ffffff"
+  }
+}

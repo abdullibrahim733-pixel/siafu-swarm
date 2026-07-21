@@ -1,0 +1,455 @@
+#VRML_SIM R2025a utf8
+# Siafu Swarm - Agricultural Field Simulation (generated)
+# License: MIT
+
+WorldInfo {
+  title "Siafu Swarm - Weed Removal Field"
+  info ["Swarm robotics for precision agriculture"
+    "Tanzania maize field simulation"]
+  basicTimeStep 32
+  coordinateSystem "NUE"
+  gpsCoordinateSystem "local"
+}
+
+Viewpoint {
+  orientation 0.3 0.3 1 0.8
+  position 8 6 10
+  near 0.1
+}
+
+TexturedBackground { texture "dry_soil" }
+TexturedBackgroundLight {}
+
+DirectionalLight {
+  direction 0.3 -1 0.2
+  intensity 0.9
+  color 1 1 1
+  castShadows TRUE
+}
+
+# ==========================================
+# SHARED NODES (hidden container for DEF/USE)
+# ==========================================
+
+DEF SHARED Transform {
+  children [
+    DEF MAIZE_SHAPE Group {
+      children [
+        Shape { geometry Cylinder { height 0.15 radius 0.015 } }
+        Transform { translation 0 0.1 0 rotation 0 0 1 0.3 children [ Shape { geometry Box { size 0.2 0.005 0.04 } } ] }
+        Transform { translation 0 0.08 0 rotation 0 0 1 -0.25 children [ Shape { geometry Box { size 0.18 0.005 0.04 } } ] }
+      ]
+    }
+
+    DEF CROP_GREEN PBRAppearance {
+      baseColor 0.15 0.55 0.15
+      roughness 0.7
+      metalness 0
+    }
+
+    DEF WEED_SHAPE Group {
+      children [
+        Shape { geometry Cylinder { height 0.02 radius 0.005 } }
+        Transform { translation 0 0.03 0 children [ Shape { geometry Box { size 0.06 0.003 0.04 } } ] }
+        Transform { translation 0.02 0.02 0 rotation 0 0 1 0.5 children [ Shape { geometry Box { size 0.04 0.003 0.03 } } ] }
+        Transform { translation -0.02 0.025 0 rotation 0 0 1 -0.4 children [ Shape { geometry Box { size 0.05 0.003 0.03 } } ] }
+      ]
+    }
+
+    DEF WEED_GREEN PBRAppearance {
+      baseColor 0.25 0.70 0.15
+      roughness 0.6
+      metalness 0
+    }
+  ]
+}
+
+# ==========================================
+# GROUND
+# ==========================================
+Solid {
+  translation 0 -0.05 0
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColorMap ImageTexture { url ["https://webots.cloud/files/textures/soil_dry.jpg"] }
+        roughness 0.9 metalness 0
+      }
+      geometry DEF FIELD_GROUND Plane { size 20 20 }
+    }
+  ]
+  boundingObject Plane { size 20 20 }
+  locked TRUE
+}
+
+# ==========================================
+# CROP ROWS
+# ==========================================
+
+  Solid {
+    translation -4.0 0 -3
+    children [ USE MAIZE_SHAPE ]
+    appearance USE CROP_GREEN
+    boundingObject USE MAIZE_SHAPE
+  }
+  Solid {
+    translation -3.0 0 -3
+    children [ USE MAIZE_SHAPE ]
+    appearance USE CROP_GREEN
+    boundingObject USE MAIZE_SHAPE
+  }
+  Solid {
+    translation -2.0 0 -3
+    children [ USE MAIZE_SHAPE ]
+    appearance USE CROP_GREEN
+    boundingObject USE MAIZE_SHAPE
+  }
+  Solid {
+    translation -1.0 0 -3
+    children [ USE MAIZE_SHAPE ]
+    appearance USE CROP_GREEN
+    boundingObject USE MAIZE_SHAPE
+  }
+  Solid {
+    translation 0.0 0 -3
+    children [ USE MAIZE_SHAPE ]
+    appearance USE CROP_GREEN
+    boundingObject USE MAIZE_SHAPE
+  }
+  Solid {
+    translation 1.0 0 -3
+    children [ USE MAIZE_SHAPE ]
+    appearance USE CROP_GREEN
+    boundingObject USE MAIZE_SHAPE
+  }
+  Solid {
+    translation 2.0 0 -3
+    children [ USE MAIZE_SHAPE ]
+    appearance USE CROP_GREEN
+    boundingObject USE MAIZE_SHAPE
+  }
+  Solid {
+    translation 3.0 0 -3
+    children [ USE MAIZE_SHAPE ]
+    appearance USE CROP_GREEN
+    boundingObject USE MAIZE_SHAPE
+  }
+  Solid {
+    translation 4.0 0 -3
+    children [ USE MAIZE_SHAPE ]
+    appearance USE CROP_GREEN
+    boundingObject USE MAIZE_SHAPE
+  }
+  Solid {
+    translation -4.0 0 0
+    children [ USE MAIZE_SHAPE ]
+    appearance USE CROP_GREEN
+    boundingObject USE MAIZE_SHAPE
+  }
+  Solid {
+    translation -3.0 0 0
+    children [ USE MAIZE_SHAPE ]
+    appearance USE CROP_GREEN
+    boundingObject USE MAIZE_SHAPE
+  }
+  Solid {
+    translation -2.0 0 0
+    children [ USE MAIZE_SHAPE ]
+    appearance USE CROP_GREEN
+    boundingObject USE MAIZE_SHAPE
+  }
+  Solid {
+    translation -1.0 0 0
+    children [ USE MAIZE_SHAPE ]
+    appearance USE CROP_GREEN
+    boundingObject USE MAIZE_SHAPE
+  }
+  Solid {
+    translation 0.0 0 0
+    children [ USE MAIZE_SHAPE ]
+    appearance USE CROP_GREEN
+    boundingObject USE MAIZE_SHAPE
+  }
+  Solid {
+    translation 1.0 0 0
+    children [ USE MAIZE_SHAPE ]
+    appearance USE CROP_GREEN
+    boundingObject USE MAIZE_SHAPE
+  }
+  Solid {
+    translation 2.0 0 0
+    children [ USE MAIZE_SHAPE ]
+    appearance USE CROP_GREEN
+    boundingObject USE MAIZE_SHAPE
+  }
+  Solid {
+    translation 3.0 0 0
+    children [ USE MAIZE_SHAPE ]
+    appearance USE CROP_GREEN
+    boundingObject USE MAIZE_SHAPE
+  }
+  Solid {
+    translation 4.0 0 0
+    children [ USE MAIZE_SHAPE ]
+    appearance USE CROP_GREEN
+    boundingObject USE MAIZE_SHAPE
+  }
+  Solid {
+    translation -4.0 0 3
+    children [ USE MAIZE_SHAPE ]
+    appearance USE CROP_GREEN
+    boundingObject USE MAIZE_SHAPE
+  }
+  Solid {
+    translation -3.0 0 3
+    children [ USE MAIZE_SHAPE ]
+    appearance USE CROP_GREEN
+    boundingObject USE MAIZE_SHAPE
+  }
+  Solid {
+    translation -2.0 0 3
+    children [ USE MAIZE_SHAPE ]
+    appearance USE CROP_GREEN
+    boundingObject USE MAIZE_SHAPE
+  }
+  Solid {
+    translation -1.0 0 3
+    children [ USE MAIZE_SHAPE ]
+    appearance USE CROP_GREEN
+    boundingObject USE MAIZE_SHAPE
+  }
+  Solid {
+    translation 0.0 0 3
+    children [ USE MAIZE_SHAPE ]
+    appearance USE CROP_GREEN
+    boundingObject USE MAIZE_SHAPE
+  }
+  Solid {
+    translation 1.0 0 3
+    children [ USE MAIZE_SHAPE ]
+    appearance USE CROP_GREEN
+    boundingObject USE MAIZE_SHAPE
+  }
+  Solid {
+    translation 2.0 0 3
+    children [ USE MAIZE_SHAPE ]
+    appearance USE CROP_GREEN
+    boundingObject USE MAIZE_SHAPE
+  }
+  Solid {
+    translation 3.0 0 3
+    children [ USE MAIZE_SHAPE ]
+    appearance USE CROP_GREEN
+    boundingObject USE MAIZE_SHAPE
+  }
+  Solid {
+    translation 4.0 0 3
+    children [ USE MAIZE_SHAPE ]
+    appearance USE CROP_GREEN
+    boundingObject USE MAIZE_SHAPE
+  }
+
+# ==========================================
+# WEEDS
+# ==========================================
+
+  Solid {
+    translation -4.5 0 -1.5
+    children [ USE WEED_SHAPE ]
+    appearance USE WEED_GREEN
+    boundingObject USE WEED_SHAPE
+  }
+  Solid {
+    translation -3.8 0 -1.5
+    children [ USE WEED_SHAPE ]
+    appearance USE WEED_GREEN
+    boundingObject USE WEED_SHAPE
+  }
+  Solid {
+    translation -3.1 0 -1.5
+    children [ USE WEED_SHAPE ]
+    appearance USE WEED_GREEN
+    boundingObject USE WEED_SHAPE
+  }
+  Solid {
+    translation -2.4000000000000004 0 -1.5
+    children [ USE WEED_SHAPE ]
+    appearance USE WEED_GREEN
+    boundingObject USE WEED_SHAPE
+  }
+  Solid {
+    translation -1.7000000000000002 0 -1.5
+    children [ USE WEED_SHAPE ]
+    appearance USE WEED_GREEN
+    boundingObject USE WEED_SHAPE
+  }
+  Solid {
+    translation -1.0 0 -1.5
+    children [ USE WEED_SHAPE ]
+    appearance USE WEED_GREEN
+    boundingObject USE WEED_SHAPE
+  }
+  Solid {
+    translation -0.3000000000000007 0 -1.5
+    children [ USE WEED_SHAPE ]
+    appearance USE WEED_GREEN
+    boundingObject USE WEED_SHAPE
+  }
+  Solid {
+    translation 0.39999999999999947 0 -1.5
+    children [ USE WEED_SHAPE ]
+    appearance USE WEED_GREEN
+    boundingObject USE WEED_SHAPE
+  }
+  Solid {
+    translation 1.0999999999999996 0 -1.5
+    children [ USE WEED_SHAPE ]
+    appearance USE WEED_GREEN
+    boundingObject USE WEED_SHAPE
+  }
+  Solid {
+    translation 1.7999999999999998 0 -1.5
+    children [ USE WEED_SHAPE ]
+    appearance USE WEED_GREEN
+    boundingObject USE WEED_SHAPE
+  }
+  Solid {
+    translation 2.5 0 -1.5
+    children [ USE WEED_SHAPE ]
+    appearance USE WEED_GREEN
+    boundingObject USE WEED_SHAPE
+  }
+  Solid {
+    translation 3.1999999999999993 0 -1.5
+    children [ USE WEED_SHAPE ]
+    appearance USE WEED_GREEN
+    boundingObject USE WEED_SHAPE
+  }
+  Solid {
+    translation 3.8999999999999986 0 -1.5
+    children [ USE WEED_SHAPE ]
+    appearance USE WEED_GREEN
+    boundingObject USE WEED_SHAPE
+  }
+  Solid {
+    translation -4.0 0 1.5
+    children [ USE WEED_SHAPE ]
+    appearance USE WEED_GREEN
+    boundingObject USE WEED_SHAPE
+  }
+  Solid {
+    translation -3.2 0 1.5
+    children [ USE WEED_SHAPE ]
+    appearance USE WEED_GREEN
+    boundingObject USE WEED_SHAPE
+  }
+  Solid {
+    translation -2.4 0 1.5
+    children [ USE WEED_SHAPE ]
+    appearance USE WEED_GREEN
+    boundingObject USE WEED_SHAPE
+  }
+  Solid {
+    translation -1.5999999999999996 0 1.5
+    children [ USE WEED_SHAPE ]
+    appearance USE WEED_GREEN
+    boundingObject USE WEED_SHAPE
+  }
+  Solid {
+    translation -0.7999999999999998 0 1.5
+    children [ USE WEED_SHAPE ]
+    appearance USE WEED_GREEN
+    boundingObject USE WEED_SHAPE
+  }
+  Solid {
+    translation 0.0 0 1.5
+    children [ USE WEED_SHAPE ]
+    appearance USE WEED_GREEN
+    boundingObject USE WEED_SHAPE
+  }
+  Solid {
+    translation 0.8000000000000007 0 1.5
+    children [ USE WEED_SHAPE ]
+    appearance USE WEED_GREEN
+    boundingObject USE WEED_SHAPE
+  }
+  Solid {
+    translation 1.6000000000000005 0 1.5
+    children [ USE WEED_SHAPE ]
+    appearance USE WEED_GREEN
+    boundingObject USE WEED_SHAPE
+  }
+  Solid {
+    translation 2.4000000000000004 0 1.5
+    children [ USE WEED_SHAPE ]
+    appearance USE WEED_GREEN
+    boundingObject USE WEED_SHAPE
+  }
+  Solid {
+    translation 3.2 0 1.5
+    children [ USE WEED_SHAPE ]
+    appearance USE WEED_GREEN
+    boundingObject USE WEED_SHAPE
+  }
+  Solid {
+    translation 4.0 0 1.5
+    children [ USE WEED_SHAPE ]
+    appearance USE WEED_GREEN
+    boundingObject USE WEED_SHAPE
+  }
+  Solid { translation -3 0 -2.2 children [ USE WEED_SHAPE ] appearance USE WEED_GREEN boundingObject USE WEED_SHAPE }
+  Solid { translation -1.5 0 -2.8 children [ USE WEED_SHAPE ] appearance USE WEED_GREEN boundingObject USE WEED_SHAPE }
+  Solid { translation 0 0 -2.2 children [ USE WEED_SHAPE ] appearance USE WEED_GREEN boundingObject USE WEED_SHAPE }
+  Solid { translation 1.5 0 -2.8 children [ USE WEED_SHAPE ] appearance USE WEED_GREEN boundingObject USE WEED_SHAPE }
+  Solid { translation 3 0 -2.2 children [ USE WEED_SHAPE ] appearance USE WEED_GREEN boundingObject USE WEED_SHAPE }
+  Solid { translation -3 0 0.5 children [ USE WEED_SHAPE ] appearance USE WEED_GREEN boundingObject USE WEED_SHAPE }
+  Solid { translation -1 0 -0.5 children [ USE WEED_SHAPE ] appearance USE WEED_GREEN boundingObject USE WEED_SHAPE }
+  Solid { translation 1 0 0.5 children [ USE WEED_SHAPE ] appearance USE WEED_GREEN boundingObject USE WEED_SHAPE }
+  Solid { translation 3 0 -0.5 children [ USE WEED_SHAPE ] appearance USE WEED_GREEN boundingObject USE WEED_SHAPE }
+  Solid { translation -2 0 2.2 children [ USE WEED_SHAPE ] appearance USE WEED_GREEN boundingObject USE WEED_SHAPE }
+  Solid { translation 0 0 2.8 children [ USE WEED_SHAPE ] appearance USE WEED_GREEN boundingObject USE WEED_SHAPE }
+  Solid { translation 2 0 2.2 children [ USE WEED_SHAPE ] appearance USE WEED_GREEN boundingObject USE WEED_SHAPE }
+  Solid { translation 4 0 2.8 children [ USE WEED_SHAPE ] appearance USE WEED_GREEN boundingObject USE WEED_SHAPE }
+
+# ==========================================
+# SOIL MOISTURE SENSORS
+# ==========================================
+
+Solid { translation -4 -0.02 -1 children [ Shape { appearance PBRAppearance { baseColor 0.4 0.3 0.2 roughness 0.8 } geometry Cylinder { height 0.02 radius 0.02 } } ] }
+Solid { translation -2 -0.02 1 children [ Shape { appearance PBRAppearance { baseColor 0.4 0.3 0.2 roughness 0.8 } geometry Cylinder { height 0.02 radius 0.02 } } ] }
+Solid { translation 0 -0.02 -1 children [ Shape { appearance PBRAppearance { baseColor 0.4 0.3 0.2 roughness 0.8 } geometry Cylinder { height 0.02 radius 0.02 } } ] }
+Solid { translation 2 -0.02 1 children [ Shape { appearance PBRAppearance { baseColor 0.4 0.3 0.2 roughness 0.8 } geometry Cylinder { height 0.02 radius 0.02 } } ] }
+Solid { translation 4 -0.02 -1 children [ Shape { appearance PBRAppearance { baseColor 0.4 0.3 0.2 roughness 0.8 } geometry Cylinder { height 0.02 radius 0.02 } } ] }
+# ==========================================
+# CHARGING STATION
+# ==========================================
+DEF ChargingStation Solid {
+  translation -6 0 0
+  children [
+    Shape { appearance PBRAppearance { baseColor 0.9 0.2 0.2 roughness 0.3 metalness 0.1 } geometry Box { size 0.5 0.05 1.0 } }
+    Transform { translation 0 0.1 0.4 children [ Shape { geometry Cylinder { height 0.15 radius 0.02 } appearance PBRAppearance { baseColor 1 0 0 emissiveColor 1 0 0 } } ] }
+    Transform { translation 0 0.1 -0.4 children [ Shape { geometry Cylinder { height 0.15 radius 0.02 } appearance PBRAppearance { baseColor 0 1 0 emissiveColor 0 1 0 } } ] }
+  ]
+  name "charging_station"
+}
+
+# ==========================================
+# SIAFU ROBOTS
+# ==========================================
+
+SiafuBot {
+  translation -5.5 0.07 -1.5
+  rotation 0 1 0 0
+  name "siafu_1"
+  robotID 1
+  bodyColor 0.2 0.2 0.8
+}
+
+SiafuBot {
+  translation -5.5 0.07 1.5
+  rotation 0 1 0 0
+  name "siafu_2"
+  robotID 2
+  bodyColor 0.8 0.2 0.2
+}
+
