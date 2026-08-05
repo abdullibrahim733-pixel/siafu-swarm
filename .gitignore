@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.env
+
+# Webots
+*.wbproj
+*.wbcore
+*.wbu
+
+# KiCad
+*-backups/
+*.kicad_pcb-bak
+*.kicad_sch-bak
+*-erc.rpt
+*-drc.rpt
+
+# Editors / OS
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+
+# Build artifacts
+*.log
