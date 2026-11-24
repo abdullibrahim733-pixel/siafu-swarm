@@ -11,13 +11,13 @@
 
 ## Overview
 
-Siafu is an open-source, low-cost swarm robotics platform designed for **research, education, and real-world deployment** in Africa. Each robot is a small differential-drive unit that coordinates with peers to achieve collective goals — no central controller needed.
+Siafu is an open-source, low-cost swarm robotics platform designed for **research and education** in Africa. The repository currently provides hardware artifacts (OpenSCAD chassis and KiCad PCB) plus a Webots simulation with a scripted robot controller. Distributed coordination is a design goal, not yet an implemented feature.
 
 The project spans:
 
 - **Hardware** — 3D-printable robot body (OpenSCAD), PCB design, sensor suite
 - **Simulation** — Webots world with configurable swarm sizes and environments
-- **Control** — Python-based controllers with flocking, consensus, and task allocation algorithms
+- **Control** — Python controller with color-based weed detection, obstacle avoidance and boundary handling; flocking/consensus/task allocation are planned (see `SIAFU_DESIGN.md`)
 
 ## Repository Structure
 
@@ -54,10 +54,10 @@ siafu-swarm/
 
 A full Webots environment is included:
 
-- **Configurable swarm size** — 5 to 50+ robots
-- **Terrain** — Rough outdoor terrain mimicking Tanzanian environments
-- **Collective behaviors** — Flocking, area coverage, consensus, task allocation
-- **Sensor noise modeling** — Realistic noise injection
+- **Current world** — two robots in a crop/weed field (the generator can place more, but collective behaviors are not implemented)
+- **Terrain** — Simplified crop rows with weeds and boundary markers
+- **Current behaviors** — color-based weed detection, obstacle avoidance, boundary turns and LoRa-tagged devices
+- **Planned** — flocking, area coverage, consensus and task allocation (see `SIAFU_DESIGN.md`)
 
 Quick start:
 
